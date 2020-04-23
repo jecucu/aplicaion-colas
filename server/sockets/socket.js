@@ -49,12 +49,14 @@ io.on('connection', (client) => {
                 mensaje: 'El escritorio es necesario'
             });
         }
+
+        let atenderTicket = ticketControl.atenderTicket(data.escritorio);
+        callback(atenderTicket);
+
         client.broadcast.emit('ultimos4', {
             actual: ticketControl.getUltimoTicket(),
             ultimos4: ticketControl.getUltimos4()
         });
-        let atenderTicket = ticketControl.atenderTicket(data.escritorio);
-        callback(atenderTicket);
     })
 
 });
